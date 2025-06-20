@@ -2,7 +2,7 @@
 Feature: Actualizacion de personaje
 
   Background:
-    * url baseUrl
+    * url port_bp_dev_test
     * def characterPayload = read('classpath:../data/bp_dev_test/request_creation_character.json')
     * def updatedPayload = read('classpath:../data/bp_dev_test/request_update_character.json')
 

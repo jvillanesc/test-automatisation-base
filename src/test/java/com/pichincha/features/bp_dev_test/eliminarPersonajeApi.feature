@@ -2,7 +2,7 @@
 Feature: Eleminar personajes
 
   Background:
-    * url baseUrl
+    * url port_bp_dev_test
     * def characterPayload = read('classpath:../data/bp_dev_test/request_creation_character.json')
 
   @id:1 @eliminarPersonajeExitosamente
