@@ -1,28 +1,12 @@
-@HU-002 @CrearPersonaje
-Feature: Crear personajes
+@HU-002 @ActualizacionPersonaje
+Feature: Actualizacion de personaje
 
   Background:
     * url baseUrl
-    * def characterPayload =
-    """
-    {
-      "name": "Iron Man",
-      "alterego": "Tony Stark",
-      "description": "Genius billionaire",
-      "powers": ["Armor", "Flight"]
-    }
-    """
-    * def updatedPayload =
-    """
-    {
-      "name": "Iron Man",
-      "alterego": "Tony Stark",
-      "description": "Updated description",
-      "powers": ["Armor", "Flight"]
-    }
-    """
+    * def characterPayload = read('classpath:../data/bp_dev_test/request_creation_character.json')
+    * def updatedPayload = read('classpath:../data/bp_dev_test/request_update_character.json')
 
-  @id:1
+  @id:1 @actualizarPersonajeExitosamente
   Scenario: Actualizar personaje exitosamente
     # Primero creamos un personaje
     Given path basePath
@@ -45,7 +29,7 @@ Feature: Crear personajes
     When method DELETE
     Then status 204
 
-  @id:2
+  @id:2  @actualizarPersonajeInexistente
   Scenario: Actualizar personaje inexistente
     Given path basePath + '/999'
     And request updatedPayload

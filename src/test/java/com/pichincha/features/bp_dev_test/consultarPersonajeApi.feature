@@ -1,20 +1,11 @@
 @HU-001 @ConsultaPersonajes
-Feature: Obtener personajes
+Feature: Consulta de personajes
 
   Background:
     * url baseUrl
-    * def characterPayload =
-    """
-    {
-      "name": "Iron Man",
-      "alterego": "Tony Stark",
-      "description": "Genius billionaire",
-      "powers": ["Armor", "Flight"]
-    }
-    """
+    * def characterPayload = read('classpath:../data/bp_dev_test/request_creation_character.json')
 
-
-  @id:1
+  @id:1 @obtenerTodosLosPersonajes
   Scenario: Obtener todos los personajes
     # Primero creamos 2 personajes para obtenerlos
     Given path basePath
@@ -35,13 +26,12 @@ Feature: Obtener personajes
     Then status 201
     And print response
 
-
     # Obtenemos todos los personajes creados
     Given path basePath
     When method get
     Then status 200
     And print response
-    And def schemaValidate = read('classpath:../data/DataSchemaCharacter.json')
+    And def schemaValidate = read('classpath:../data/bp_dev_test/response_schema_character.json')
     And match each response[*] contains schemaValidate
     And assert response.length == 2
     And def characters = $
@@ -54,7 +44,7 @@ Feature: Obtener personajes
     When method DELETE
     Then status 204
 
-  @id:2
+  @id:2 @obtenerPersonajePorIdExitoso
   Scenario: Obtener personaje por ID (exitoso)
     # Primero creamos un personaje para obtenerlo
     Given path basePath
@@ -76,7 +66,7 @@ Feature: Obtener personajes
     When method DELETE
     Then status 204
 
-  @id:3
+  @id:3 @obtenerPersonajePorIdInexistente
   Scenario: Obtener personaje por ID inexistente
     Given path basePath + '/999'
     When method GET

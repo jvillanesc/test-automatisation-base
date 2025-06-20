@@ -8,22 +8,7 @@ class KarateBasicTest {
 
     @Karate.Test
     Karate list() {
-        return Karate.run("classpath:CharacterList.feature");
-    }
-
-    @Karate.Test
-    Karate creation() {
-        return Karate.run("classpath:CharacterCreation.feature");
-    }
-
-    @Karate.Test
-    Karate udpate() {
-        return Karate.run("classpath:CharacterUpdate.feature");
-    }
-
-    @Karate.Test
-    Karate delete() {
-        return Karate.run("classpath:CharacterDelete.feature");
+        return Karate.run("src/test/java/com/pichincha/features/bp_dev_test");
     }
 
 

@@ -1,17 +1,9 @@
-@HU-002 @CrearPersonaje
-Feature: Crear personajes
+@HU-002 @EliminarPersonajes
+Feature: Eleminar personajes
 
   Background:
     * url baseUrl
-    * def characterPayload =
-    """
-    {
-      "name": "Iron Man",
-      "alterego": "Tony Stark",
-      "description": "Genius billionaire",
-      "powers": ["Armor", "Flight"]
-    }
-    """
+    * def characterPayload = read('classpath:../data/bp_dev_test/request_creation_character.json')
 
   @id:1 @eliminarPersonajeExitosamente
   Scenario: Eliminar personaje exitosamente

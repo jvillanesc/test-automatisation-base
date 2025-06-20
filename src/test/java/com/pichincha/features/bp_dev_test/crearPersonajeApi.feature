@@ -3,24 +3,8 @@ Feature: Crear personajes
 
   Background:
     * url baseUrl
-    * def characterPayload =
-    """
-    {
-      "name": "Iron Man",
-      "alterego": "Tony Stark",
-      "description": "Genius billionaire",
-      "powers": ["Armor", "Flight"]
-    }
-    """
-    * def invalidPayload =
-    """
-    {
-      "name": "",
-      "alterego": "",
-      "description": "",
-      "powers": []
-    }
-    """
+    * def characterPayload = read('classpath:../data/bp_dev_test/request_creation_character.json')
+    * def invalidPayload = read('classpath:../data/bp_dev_test/request_invalid_creation_character.json')
 
   @id:1 @crearUnPersonajeExitosamente
   Scenario: Crear un personaje exitosamente
